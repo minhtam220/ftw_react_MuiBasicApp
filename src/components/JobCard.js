@@ -7,13 +7,13 @@ import SkillsList from "./SkillsList";
 
 export default function JobCard({ job }) {
   return (
-    <Card
-      sx={{
-        height: "300px",
-        minWidth: "350px",
-      }}
-    >
-      <CardActionArea>
+    <Card>
+      <CardActionArea
+        sx={{
+          height: "300px",
+          minWidth: "350px",
+        }}
+      >
         <CardContent>
           <Typography
             gutterBottom
@@ -21,6 +21,7 @@ export default function JobCard({ job }) {
             component="div"
             sx={{
               textAlign: "center",
+              fontSize: "20px",
             }}
           >
             {job.title}
@@ -55,8 +56,12 @@ export default function JobCard({ job }) {
               variant="contained"
               sx={{
                 alignContent: "center",
-                bgcolor: "orange",
+                backgroundColor: "#c49f49",
                 fontSize: "12px",
+                marginBottom: "10px",
+                "&:hover": {
+                  bgcolor: "#c4ad49",
+                },
               }}
             >
               Learn more
