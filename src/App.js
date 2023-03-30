@@ -1,5 +1,8 @@
 import "./App.css";
 import { Grid, Box } from "@mui/material";
+import { getJobs } from "./data.js";
+import { Link, Outlet, useSearchParams } from "react-router-dom";
+import { styled, alpha } from "@mui/material/styles";
 import NavigationBar from "./components/NavigationBar";
 import JobCard from "./components/JobCard";
 import jobs from "./jobs.json";
@@ -19,15 +22,42 @@ const theme = createTheme({
 });
 
 export default function App() {
+  let jobs = getJobs();
+  let [searchParams, setSearchParams] = useSearchParams();
+
   return (
     <ThemeProvider theme={theme}>
       <NavigationBar />
+
+      <input
+        value={searchParams.get("filter") || ""}
+        onChange={(event) => {
+          let filter = event.target.value;
+          if (filter) {
+            setSearchParams({ filter });
+          } else {
+            setSearchParams({});
+          }
+        }}
+      />
+
       <Grid container spacing={2}>
-        {jobs.slice(0, 5).map((job) => (
-          <Grid item xs={12} md={4} lg={3}>
-            <JobCard job={job} />
-          </Grid>
-        ))}
+        {jobs
+
+          .filter((job) => {
+            let filter = searchParams.get("filter");
+            if (!filter) return true;
+            let title = job.title.toLowerCase();
+            return title.startsWith(filter.toLowerCase());
+          })
+
+          .slice(0, 20)
+
+          .map((job) => (
+            <Grid item xs={12} md={4} lg={3}>
+              <JobCard job={job} />
+            </Grid>
+          ))}
       </Grid>
       <Box
         sx={{
