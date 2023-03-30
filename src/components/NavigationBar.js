@@ -15,7 +15,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -61,19 +60,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
 
-export default function NavigationBar(props: Props) {
-  const { window } = props;
+export default function NavigationBar({ searchParams, setSearchParams }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -97,9 +87,6 @@ export default function NavigationBar(props: Props) {
       </List>
     </Box>
   );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -130,6 +117,15 @@ export default function NavigationBar(props: Props) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              value={searchParams.get("filter") || ""}
+              onChange={(event) => {
+                let filter = event.target.value;
+                if (filter) {
+                  setSearchParams({ filter });
+                } else {
+                  setSearchParams({});
+                }
+              }}
             />
           </Search>
 
@@ -142,26 +138,6 @@ export default function NavigationBar(props: Props) {
           </Box>
         </Toolbar>
       </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
         <Typography>

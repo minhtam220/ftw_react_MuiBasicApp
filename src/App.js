@@ -27,18 +27,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationBar />
-
-      <input
-        value={searchParams.get("filter") || ""}
-        onChange={(event) => {
-          let filter = event.target.value;
-          if (filter) {
-            setSearchParams({ filter });
-          } else {
-            setSearchParams({});
-          }
-        }}
+      <NavigationBar
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
 
       <Grid container spacing={2}>
