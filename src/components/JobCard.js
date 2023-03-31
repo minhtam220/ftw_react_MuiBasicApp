@@ -6,6 +6,7 @@ import { CardActionArea, Button, Box, Divider } from "@mui/material";
 import SkillsList from "./SkillsList";
 import Modal from "@mui/material/Modal";
 import { styled, alpha } from "@mui/material/styles";
+import LoginForm from "./LoginForm";
 
 const style = {
   position: "absolute",
@@ -114,6 +115,7 @@ export default function JobCard({ loggedIn, handleLogin, handleLogout, job }) {
                 </Box>
               ) : (
                 <Box sx={style}>
+                  <LoginForm />
                   <Button onClick={handleLogin} sx={{ color: "#fff" }}>
                     Log In
                   </Button>
