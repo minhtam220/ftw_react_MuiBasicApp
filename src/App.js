@@ -8,8 +8,6 @@ import JobCard from "./components/JobCard";
 import jobs from "./jobs.json";
 import BasicPagination from "./components/BasicPagination";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
-import { Login, Logout } from "./LogIn.js";
 
 const theme = createTheme({
   palette: {
@@ -24,25 +22,12 @@ const theme = createTheme({
 });
 
 export default function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-  };
-
   let jobs = getJobs();
   let [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <ThemeProvider theme={theme}>
       <NavigationBar
-        loggedIn={loggedIn}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
         searchParams={searchParams}
         setSearchParams={setSearchParams}
       />
@@ -61,12 +46,7 @@ export default function App() {
 
           .map((job) => (
             <Grid item xs={12} md={4} lg={3}>
-              <JobCard
-                loggedIn={loggedIn}
-                handleLogin={handleLogin}
-                handleLogout={handleLogout}
-                job={job}
-              />
+              <JobCard job={job} />
             </Grid>
           ))}
       </Grid>

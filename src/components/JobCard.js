@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Button, Box, Divider } from "@mui/material";
 import SkillsList from "./SkillsList";
+<<<<<<< HEAD
 import Modal from "@mui/material/Modal";
 import { styled, alpha } from "@mui/material/styles";
 import LoginForm from "./LoginForm";
@@ -26,7 +27,10 @@ export default function JobCard({ loggedIn, handleLogin, handleLogout, job }) {
   const handleOpen = () => setOpen(true);
 
   const handleClose = () => setOpen(false);
+=======
+>>>>>>> parent of eb52cee (make simple login logout work)
 
+export default function JobCard({ job }) {
   return (
     <Card>
       <CardActionArea
@@ -74,7 +78,6 @@ export default function JobCard({ loggedIn, handleLogin, handleLogout, job }) {
             }}
           >
             <Button
-              onClick={handleOpen}
               variant="contained"
               sx={{
                 alignContent: "center",
@@ -88,6 +91,7 @@ export default function JobCard({ loggedIn, handleLogin, handleLogout, job }) {
             >
               Learn more
             </Button>
+<<<<<<< HEAD
             <Modal
               open={open}
               onClose={handleClose}
@@ -122,6 +126,8 @@ export default function JobCard({ loggedIn, handleLogin, handleLogout, job }) {
                 </Box>
               )}
             </Modal>
+=======
+>>>>>>> parent of eb52cee (make simple login logout work)
           </Box>
         </CardContent>
       </CardActionArea>
