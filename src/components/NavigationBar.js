@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -63,12 +64,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
 
-export default function NavigationBar({ searchParams, setSearchParams }) {
+export default function NavigationBar({
+  loggedIn,
+  handleLogin,
+  handleLogout,
+  searchParams,
+  setSearchParams,
+}) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  const [openForm, setOpenForm] = useState(false);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -128,13 +137,21 @@ export default function NavigationBar({ searchParams, setSearchParams }) {
               }}
             />
           </Search>
-
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
+            {loggedIn ? (
+              <>
+                <Typography>
+                  Tam Nguyen,
+                  <Button onClick={handleLogout} sx={{ color: "#fff" }}>
+                    Log Out
+                  </Button>
+                </Typography>
+              </>
+            ) : (
+              <Button onClick={handleLogin} sx={{ color: "#fff" }}>
+                Log In
               </Button>
-            ))}
+            )}
           </Box>
         </Toolbar>
       </AppBar>
