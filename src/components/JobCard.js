@@ -4,31 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Button, Box, Divider } from "@mui/material";
 import SkillsList from "./SkillsList";
-<<<<<<< HEAD
-import Modal from "@mui/material/Modal";
-import { styled, alpha } from "@mui/material/styles";
 import LoginForm from "./LoginForm";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-export default function JobCard({ loggedIn, handleLogin, handleLogout, job }) {
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-
-  const handleClose = () => setOpen(false);
-=======
->>>>>>> parent of eb52cee (make simple login logout work)
 
 export default function JobCard({ job }) {
   return (
@@ -91,7 +67,6 @@ export default function JobCard({ job }) {
             >
               Learn more
             </Button>
-<<<<<<< HEAD
             <Modal
               open={open}
               onClose={handleClose}
@@ -126,8 +101,6 @@ export default function JobCard({ job }) {
                 </Box>
               )}
             </Modal>
-=======
->>>>>>> parent of eb52cee (make simple login logout work)
           </Box>
         </CardContent>
       </CardActionArea>
