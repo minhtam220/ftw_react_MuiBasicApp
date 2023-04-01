@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Link, Outlet, useSearchParams } from "react-router-dom";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { styled, alpha } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -60,7 +59,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
 
 export default function NavigationBar({ searchParams, setSearchParams }) {

@@ -4,9 +4,31 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Button, Box, Divider } from "@mui/material";
 import SkillsList from "./SkillsList";
-import LoginForm from "./LoginForm";
 
-export default function JobCard({ job }) {
+import { Modal } from "@mui/material";
+import { useState } from "react";
+import { styled, alpha } from "@mui/material/styles";
+
+import { LoginForm } from "./LoginForm";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+export default function JobCard({ loggedIn, handleLogin, job }) {
+  //implement modal
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Card>
       <CardActionArea
@@ -54,6 +76,7 @@ export default function JobCard({ job }) {
             }}
           >
             <Button
+              onClick={handleOpen}
               variant="contained"
               sx={{
                 alignContent: "center",
@@ -94,10 +117,7 @@ export default function JobCard({ job }) {
                 </Box>
               ) : (
                 <Box sx={style}>
-                  <LoginForm />
-                  <Button onClick={handleLogin} sx={{ color: "#fff" }}>
-                    Log In
-                  </Button>
+                  <LoginForm handleLogin={handleLogin} />
                 </Box>
               )}
             </Modal>
