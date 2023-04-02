@@ -19,7 +19,14 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -63,10 +70,34 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 export default function NavigationBar({}) {
+  //show or not show Login Modal
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  //handle login
   const { login } = useContext(AuthContext);
   const { logout } = useContext(AuthContext);
   const { isAuthenticated } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    login();
+    navigate("/jobs");
+  };
 
   const handleLogout = () => {
     //event.preventDefault();
@@ -75,65 +106,133 @@ export default function NavigationBar({}) {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar component="nav">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            <Link to="/jobs" style={{ textDecoration: "none", color: "white" }}>
-              Job Routing
-            </Link>
+    <div>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar component="nav">
+          <Toolbar>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              <Link
+                to="/jobs"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                Job Routing
+              </Link>
+            </Typography>
+
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                value={""}
+              />
+            </Search>
+
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              {isAuthenticated ? <>Hello Tam</> : <></>}
+            </Typography>
+
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {isAuthenticated ? (
+                <>
+                  <Link>
+                    <Button sx={{ color: "#fff" }} onClick={handleLogout}>
+                      Logout
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link>
+                    <Button sx={{ color: "#fff" }} onClick={handleOpen}>
+                      Login
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        <Box component="main" sx={{ p: 3 }}>
+          <Toolbar />
+          <Typography>
+            Pick one job and you won't have to eat noodles again!
           </Typography>
-
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              value={""}
-            />
-          </Search>
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            {isAuthenticated ? <>Hello Tam</> : <></>}
-          </Typography>
-
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {isAuthenticated ? (
-              <>
-                <Link>
-                  <Button sx={{ color: "#fff" }} onClick={handleLogout}>
-                    Logout
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link to="/login">
-                  <Button sx={{ color: "#fff" }}>Login</Button>
-                </Link>
-              </>
-            )}
-          </Box>
-        </Toolbar>
-      </AppBar>
-
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-        <Typography>
-          Pick one job and you won't have to eat noodles again!
-        </Typography>
+        </Box>
       </Box>
-    </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Box
+            sx={{
+              //marginTop: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              borderRadius: "10px",
+            }}
+          >
+            <Typography component="h1" variant="h5">
+              Log in
+            </Typography>
+            <Box component="form" validate sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value="tam@coderschool.com"
+                autoFocus
+                sx={{
+                  color: "white",
+                }}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value="tam@coderschool.com"
+                sx={{
+                  color: "white",
+                }}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={handleLogin}
+              >
+                Log In
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Modal>
+    </div>
   );
 }

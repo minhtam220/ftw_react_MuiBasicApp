@@ -19,12 +19,11 @@ export default function LoginPage() {
   const { login } = useContext(AuthContext);
   const { logout } = useContext(AuthContext);
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     //event.preventDefault();
     login();
-    navigate("/jobs");
   };
 
   return (
