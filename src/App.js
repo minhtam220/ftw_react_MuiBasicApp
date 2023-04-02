@@ -1,45 +1,29 @@
-import "./App.css";
-import { Grid, Box } from "@mui/material";
-import { getJobs } from "./data.js";
-import { Link, Outlet, useSearchParams } from "react-router-dom";
-import { styled, alpha } from "@mui/material/styles";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import JobCard from "./components/JobCard";
-import BasicPagination from "./components/BasicPagination";
-import { useState } from "react";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { useSearchParams } from 'react-router-dom';
+import './App.css';
+import { getJobs } from './data.js';
 //implement login
-import { Route, Routes, useLocation } from "react-router-dom";
-import { AuthProvider } from "./AuthContext";
-import { RequireAuth } from "./RequireAuth.js";
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
 //children pages
-import JobsPage from "./pages/JobsPage";
-import LoginPage from "./pages/LoginPage";
-import JobDetailModal from "./pages/JobDetailModal";
+import LoginModal from './components/LoginModal';
+import { RequireAuth } from './components/RequireAuth';
+import JobDetailModal from './pages/JobDetailModal';
+import JobsPage from './pages/JobsPage';
 
 const theme = createTheme({
   palette: {
-    mode: "dark",
+    mode: 'dark',
     primary: {
-      main: "#90caf9",
-      light: "#e3f2fd",
-      dark: "#42a5f5",
-      contrastText: "rgba(0,0,0,0.87)",
+      main: '#90caf9',
+      light: '#e3f2fd',
+      dark: '#42a5f5',
+      contrastText: 'rgba(0,0,0,0.87)',
     },
   },
 });
 
 export default function App() {
-  //implement login
-  const [loggedIn, setLoggedIn] = useState(true);
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-  };
-
   //implement search
   let jobs = getJobs();
   let [searchParams, setSearchParams] = useSearchParams();
@@ -49,29 +33,29 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className='App'>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<JobsPage />} />
-            <Route path="jobs" element={<JobsPage />}></Route>
+            <Route path='/' element={<JobsPage />} />
+            <Route path='jobs' element={<JobsPage />}></Route>
             <Route
-              path="jobs/:jobId"
+              path='jobs/:jobId'
               element={
                 <RequireAuth>
                   <JobDetailModal />
                 </RequireAuth>
               }
             />
-            <Route path="login" element={<LoginPage />} />
             <Route
-              path="*"
+              path='*'
               element={
-                <main style={{ padding: "1rem" }}>
+                <main style={{ padding: '1rem' }}>
                   <h2>There's nothing here!</h2>
                 </main>
               }
             />
           </Routes>
+          <LoginModal />
         </AuthProvider>
       </div>
     </ThemeProvider>

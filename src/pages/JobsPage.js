@@ -1,22 +1,12 @@
-import "../App.css";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-import { Grid } from "@mui/material";
-import JobCard from "../components/JobCard";
-import { getJobs } from "../data.js";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Grid } from '@mui/material';
+import { useSearchParams } from 'react-router-dom';
+import '../App.css';
+import JobCard from '../components/JobCard';
+import { getJobs } from '../data.js';
 
-import { useContext } from "react";
-import { AuthContext } from "../AuthContext";
-import NavigationBar from "../components/NavigationBar";
-import { Outlet } from "react-router-dom";
+import NavigationBar from '../components/NavigationBar';
 
 export default function JobsPage() {
-  const location = useLocation();
-  //implement login
-  const { isAuthenticated } = useContext(AuthContext);
-  const { login } = useContext(AuthContext);
-  const { logout } = useContext(AuthContext);
-
   //implement search
   let jobs = getJobs();
   let [searchParams, setSearchParams] = useSearchParams();
@@ -27,7 +17,7 @@ export default function JobsPage() {
       <Grid container spacing={2}>
         {jobs
           .filter((job) => {
-            let filter = searchParams.get("filter");
+            let filter = searchParams.get('filter');
             if (!filter) return true;
             let title = job.title.toLowerCase();
             return title.startsWith(filter.toLowerCase());
