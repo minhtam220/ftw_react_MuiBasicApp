@@ -19,6 +19,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -62,35 +63,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const navItems = ["Home", "Jobs"];
-
-export default function NavigationBar({ loggedIn, handleLogout }) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+export default function NavigationBar({}) {
   const { login } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const { isAuthenticated } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    //event.preventDefault();
+    logout();
+    //navigate("/jobs");
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -102,7 +84,9 @@ export default function NavigationBar({ loggedIn, handleLogout }) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Job Routing
+            <Link to="/jobs" style={{ textDecoration: "none", color: "white" }}>
+              Job Routing
+            </Link>
           </Typography>
 
           <Search>
@@ -116,27 +100,28 @@ export default function NavigationBar({ loggedIn, handleLogout }) {
             />
           </Search>
 
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }} href={`/${item}`}>
-                {item}
-              </Button>
-            ))}
-          </Box>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            {isAuthenticated ? <>Hello Tam</> : <></>}
+          </Typography>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {isAuthenticated ? (
               <>
-                <Button sx={{ color: "#fff" }}>Hello Tam</Button>
-                <Button sx={{ color: "#fff" }} onClick={handleLogout}>
-                  Logout
-                </Button>
+                <Link>
+                  <Button sx={{ color: "#fff" }} onClick={handleLogout}>
+                    Logout
+                  </Button>
+                </Link>
               </>
             ) : (
               <>
-                <Button sx={{ color: "#fff" }} href={`/login`}>
-                  Login
-                </Button>
+                <Link to="/login">
+                  <Button sx={{ color: "#fff" }}>Login</Button>
+                </Link>
               </>
             )}
           </Box>

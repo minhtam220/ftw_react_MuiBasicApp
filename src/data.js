@@ -1,6 +1,5 @@
 let jobs = [
   {
-    number: 0,
     id: "_cx62grqgd",
     companyId: "_1js1rb41w",
     title: "05 Developers (ReactJS, NodeJS)",
@@ -16,7 +15,6 @@ let jobs = [
     skills: ["HTML", "Waterfall", "Test Driven development", "NodeJS"],
   },
   {
-    number: 1,
     id: "_srt9zo8iz",
     companyId: "_xp6euaxae",
     title: "Full Stack Software Engineer",
@@ -32,7 +30,6 @@ let jobs = [
     skills: ["Independent Learner", "Grunt", "GCP"],
   },
   {
-    number: 2,
     id: "_hicjm0zgs",
     companyId: "_xp6euaxae",
     title: "Full-Stack Engineer - Open to U.S. Remote",
@@ -48,7 +45,6 @@ let jobs = [
     skills: ["Open Minded", "Success Driven", "Redux"],
   },
   {
-    number: 3,
     id: "_3ptahsno6",
     companyId: "_6s4fcvwqg",
     title: "Full Stack Software Engineer",
@@ -64,7 +60,6 @@ let jobs = [
     skills: ["REST", "Motivated", "Python"],
   },
   {
-    number: 4,
     id: "_o6m4p5c39",
     companyId: "_7xo50sanl",
     title: "React Native Dev (JavaScript, ReactJS)",
@@ -80,7 +75,6 @@ let jobs = [
     skills: ["Independent Learner", "Jenkins"],
   },
   {
-    number: 5,
     id: "_60sl6v1fo",
     companyId: "_lerjrekhx",
     title: "Tech Lead - Mobile Engineer",
@@ -103,7 +97,6 @@ let jobs = [
     ],
   },
   {
-    number: 6,
     id: "_59ky1v0i4",
     companyId: "_v86b2k3pv",
     title: "Software Engineer",
@@ -119,7 +112,6 @@ let jobs = [
     skills: ["GraphQL", "Netlify", "Linux", "Python"],
   },
   {
-    number: 7,
     id: "_9i69890qk",
     companyId: "_n85y8956i",
     title: "Software Engineer",
@@ -135,7 +127,6 @@ let jobs = [
     skills: [".NET", "ES6", "Kotlin"],
   },
   {
-    number: 8,
     id: "_7xywros7m",
     companyId: "_au9gk9akr",
     title: "Full Stack Developer (NodeJS, ReactJS)",
@@ -151,7 +142,6 @@ let jobs = [
     skills: ["Python", "Linux", "Independent Teammate"],
   },
   {
-    number: 9,
     id: "_d08d5p0ub",
     companyId: "_6s4fcvwqg",
     title: "Full Stack Software Engineer",
@@ -167,7 +157,6 @@ let jobs = [
     skills: ["Frontend", "Proactive Thinker", "Embedded Systems", "Vim"],
   },
   {
-    number: 10,
     id: "_53os00p0n",
     companyId: "_v86b2k3pv",
     title: "Full-stack Engineer (ReactJS, NodeJS)",
@@ -183,7 +172,6 @@ let jobs = [
     skills: ["JS", "VueJS", "Rancher"],
   },
   {
-    number: 11,
     id: "_5j4gwq5xc",
     companyId: "_1js1rb41w",
     title: "Full Stack Software Engineer",
@@ -199,7 +187,6 @@ let jobs = [
     skills: ["NPM", "Proactive Learner", "Rancher"],
   },
   {
-    number: 12,
     id: "_a5xilmap8",
     companyId: "_v86b2k3pv",
     title: "Frontend Engineer",
@@ -215,7 +202,6 @@ let jobs = [
     skills: ["Webpack", "Jenkins"],
   },
   {
-    number: 13,
     id: "_7ktixmpfu",
     companyId: "_2x5u1ahbm",
     title: "Full-stack Engineer (ReactJS, NodeJS)",

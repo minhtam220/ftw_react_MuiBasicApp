@@ -8,6 +8,7 @@ import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getJob } from "../data.js";
+import NavigationBar from "../components/NavigationBar.js";
 
 const style = {
   position: "absolute",
@@ -21,26 +22,29 @@ const style = {
   p: 4,
 };
 
-export default function JobDetailPage() {
+export default function JobDetailModal() {
   let navigate = useNavigate();
   let location = useLocation();
   let params = useParams();
   let job = getJob(params.jobId);
 
   return (
-    <Box sx={style}>
-      <Typography id="modal-modal-title" variant="h6" component="h2">
-        {job.title}
-      </Typography>
-      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-        {job.description}
-        <br />
-        Location: {job.city}
-        <br />
-        Experience: {job.yrsXPExpected}
-        <br />
-        Salary: {job.salaryLow} - {job.salaryHigh}
-      </Typography>
-    </Box>
+    <div>
+      <NavigationBar></NavigationBar>
+      <Box sx={style}>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          {job.title}
+        </Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          {job.description}
+          <br />
+          Location: {job.city}
+          <br />
+          Experience: {job.yrsXPExpected}
+          <br />
+          Salary: {job.salaryLow} - {job.salaryHigh}
+        </Typography>
+      </Box>
+    </div>
   );
 }
