@@ -9,7 +9,9 @@ import { Modal } from "@mui/material";
 import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 
-import { LoginForm } from "./LoginForm";
+import { getJob } from "../data.js";
+import { Link, Outlet, useSearchParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -23,11 +25,13 @@ const style = {
   p: 4,
 };
 
-export default function JobCard({ loggedIn, handleLogin, job }) {
+export default function JobCard({ job }) {
   //implement modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  let navigate = useNavigate();
 
   return (
     <Card>
@@ -75,52 +79,26 @@ export default function JobCard({ loggedIn, handleLogin, job }) {
               borderRadius: 1,
             }}
           >
-            <Button
-              onClick={handleOpen}
-              variant="contained"
-              sx={{
-                alignContent: "center",
-                backgroundColor: "#c49f49",
-                fontSize: "12px",
-                marginBottom: "10px",
-                "&:hover": {
-                  bgcolor: "#c4ad49",
-                },
-              }}
+            <Link
+              key={job.id}
+              to={`/jobs/${job.id}`}
+              style={{ textDecoration: "none" }}
             >
-              Learn more
-            </Button>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              {loggedIn ? (
-                <Box sx={style}>
-                  <Typography
-                    id="modal-modal-title"
-                    variant="h6"
-                    component="h2"
-                  >
-                    {job.title}
-                  </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {job.description}
-                    <br />
-                    Location: {job.city}
-                    <br />
-                    Experience: {job.yearsXPExpected}
-                    <br />
-                    Salary: {job.salaryLow} - {job.salaryHigh}
-                  </Typography>
-                </Box>
-              ) : (
-                <Box sx={style}>
-                  <LoginForm handleLogin={handleLogin} />
-                </Box>
-              )}
-            </Modal>
+              <Button
+                variant="contained"
+                sx={{
+                  alignContent: "center",
+                  backgroundColor: "#c49f49",
+                  fontSize: "12px",
+                  marginBottom: "10px",
+                  "&:hover": {
+                    bgcolor: "#c4ad49",
+                  },
+                }}
+              >
+                Learn more
+              </Button>
+            </Link>
           </Box>
         </CardContent>
       </CardActionArea>

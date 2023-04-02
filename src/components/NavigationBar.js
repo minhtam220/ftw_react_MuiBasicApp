@@ -17,6 +17,9 @@ import { styled, alpha } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -59,9 +62,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "Jobs"];
 
-export default function NavigationBar({ searchParams, setSearchParams }) {
+export default function NavigationBar({ loggedIn, handleLogout }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -86,26 +89,20 @@ export default function NavigationBar({ searchParams, setSearchParams }) {
     </Box>
   );
 
+  const { login } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Basic App
+            Job Routing
           </Typography>
 
           <Search>
@@ -115,27 +112,37 @@ export default function NavigationBar({ searchParams, setSearchParams }) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
-              value={searchParams.get("filter") || ""}
-              onChange={(event) => {
-                let filter = event.target.value;
-                if (filter) {
-                  setSearchParams({ filter });
-                } else {
-                  setSearchParams({});
-                }
-              }}
+              value={""}
             />
           </Search>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
+              <Button key={item} sx={{ color: "#fff" }} href={`/${item}`}>
                 {item}
               </Button>
             ))}
           </Box>
+
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {isAuthenticated ? (
+              <>
+                <Button sx={{ color: "#fff" }}>Hello Tam</Button>
+                <Button sx={{ color: "#fff" }} onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button sx={{ color: "#fff" }} href={`/login`}>
+                  Login
+                </Button>
+              </>
+            )}
+          </Box>
         </Toolbar>
       </AppBar>
+
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
         <Typography>

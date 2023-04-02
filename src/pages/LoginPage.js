@@ -8,19 +8,41 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export function LoginForm(handleLogin) {
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext";
+
+export default function LoginPage() {
+  const { isAuthenticated } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
+
+  let navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    /*
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
+    */
+    if (isAuthenticated) {
+      navigate("/jobs");
+    } else {
+      login();
+      navigate("/jobs");
+    }
   };
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const handleLogin = () => {
+    //event.preventDefault();
+
+    login();
+    navigate("/jobs");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -36,10 +58,10 @@ export function LoginForm(handleLogin) {
         <Typography component="h1" variant="h5">
           Log in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
-            required
+            noRequired
             fullWidth
             id="email"
             label="Email Address"
@@ -52,7 +74,7 @@ export function LoginForm(handleLogin) {
           />
           <TextField
             margin="normal"
-            required
+            noRequired
             fullWidth
             name="password"
             label="Password"
