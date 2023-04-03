@@ -1,26 +1,29 @@
-import { Grid } from '@mui/material'
-import { Outlet, useSearchParams } from 'react-router-dom'
-import '../App.css'
-import JobCard from '../components/JobCard'
-import { getJobs } from '../data.js'
+import { Grid } from "@mui/material";
+import { Outlet, useSearchParams } from "react-router-dom";
+import "../App.css";
+import JobCard from "../components/JobCard";
+import { getJobs } from "../data.js";
 
-import NavigationBar from '../components/NavigationBar'
+import NavigationBar from "../components/NavigationBar";
 
 export default function JobsPage() {
   //implement search
-  let jobs = getJobs()
-  let [searchParams, setSearchParams] = useSearchParams()
+  let jobs = getJobs();
+  let [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <div>
-      <NavigationBar></NavigationBar>
+      <NavigationBar
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      ></NavigationBar>
       <Grid container spacing={2}>
         {jobs
           .filter((job) => {
-            let filter = searchParams.get('filter')
-            if (!filter) return true
-            let title = job.title.toLowerCase()
-            return title.startsWith(filter.toLowerCase())
+            let filter = searchParams.get("filter");
+            if (!filter) return true;
+            let title = job.title.toLowerCase();
+            return title.startsWith(filter.toLowerCase());
           })
 
           .slice(0, 20)
@@ -33,5 +36,5 @@ export default function JobsPage() {
       </Grid>
       <Outlet />
     </div>
-  )
+  );
 }
