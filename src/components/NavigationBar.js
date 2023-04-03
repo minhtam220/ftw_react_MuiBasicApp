@@ -1,17 +1,17 @@
-import SearchIcon from '@mui/icons-material/Search';
-import { alpha, styled } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import InputBase from '@mui/material/InputBase';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import SearchIcon from '@mui/icons-material/Search'
+import { alpha, styled } from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import InputBase from '@mui/material/InputBase'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
 
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../AuthContext';
+import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../AuthContext'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -26,7 +26,7 @@ const Search = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(1),
     width: 'auto',
   },
-}));
+}))
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -36,7 +36,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-}));
+}))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -53,12 +53,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       },
     },
   },
-}));
+}))
 
 export default function NavigationBar({}) {
-  const { setLoginModalOpen } = useContext(AuthContext);
-  const { logout } = useContext(AuthContext);
-  const { isAuthenticated } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext)
+  const { isAuthenticated } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   return (
     <div>
@@ -109,13 +109,8 @@ export default function NavigationBar({}) {
                 </>
               ) : (
                 <>
-                  <Link>
-                    <Button
-                      sx={{ color: '#fff' }}
-                      onClick={() => setLoginModalOpen(true)}
-                    >
-                      Login
-                    </Button>
+                  <Link to={'/login'}>
+                    <Button sx={{ color: '#fff' }}>Login</Button>
                   </Link>
                 </>
               )}
@@ -131,5 +126,5 @@ export default function NavigationBar({}) {
         </Box>
       </Box>
     </div>
-  );
+  )
 }
