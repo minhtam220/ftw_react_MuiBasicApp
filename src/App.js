@@ -1,13 +1,9 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useSearchParams } from "react-router-dom";
 import "./App.css";
-import { getJobs } from "./data.js";
-//implement login
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
-//children pages
-import LoginModal from "./components/LoginModal";
 import { RequireAuth } from "./components/RequireAuth";
+import LoginModal from "./components/LoginModal";
 import JobModal from "./pages/JobModal";
 import JobsPage from "./pages/JobsPage";
 
@@ -24,13 +20,6 @@ const theme = createTheme({
 });
 
 export default function App() {
-  //implement search
-  let jobs = getJobs();
-  let [searchParams, setSearchParams] = useSearchParams();
-
-  const location = useLocation();
-  const background = location.state && location.state.background;
-
   return (
     <ThemeProvider theme={theme}>
       <div className="App">

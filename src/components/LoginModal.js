@@ -1,6 +1,6 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 
 const style = {
@@ -24,6 +24,7 @@ export default function LoginModal() {
 
   const handleLogin = (event) => {
     event.preventDefault();
+
     login();
     navigate(-1);
   };

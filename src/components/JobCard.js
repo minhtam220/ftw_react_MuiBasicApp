@@ -1,7 +1,13 @@
-import { Box, Button, CardActionArea, Divider, Modal } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import {
+  Box,
+  Button,
+  CardActionArea,
+  Divider,
+  Modal,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +28,7 @@ const style = {
 
 export default function JobCard({ job }) {
   const { isAuthenticated } = useContext(AuthContext);
-  const handleOpenJobModal = () => setOpenJobModal(true);
+  //const handleOpenJobModal = () => setOpenJobModal(true);
   const handleCloseJobModal = () => setOpenJobModal(false);
 
   const [jobModalOpen, setOpenJobModal] = useState(false);

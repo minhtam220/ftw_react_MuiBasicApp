@@ -1,11 +1,9 @@
 import { Box, Modal, Typography } from "@mui/material";
 import * as React from "react";
 import { useParams } from "react-router-dom";
-import NavigationBar from "../components/NavigationBar.js";
 import { getJob } from "../data.js";
-import { useContext, useEffect, useState } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",

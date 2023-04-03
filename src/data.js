@@ -2,7 +2,7 @@ let jobs = [
   {
     id: "_cx62grqgd",
     companyId: "_1js1rb41w",
-    title: "05 Developers (ReactJS, NodeJS)",
+    title: "Job 1 - 05 Developers (ReactJS, NodeJS)",
     city: "Austin",
     postedDate: "2021-06-24T12:45:30.589Z",
     salaryLow: 310000,
@@ -17,7 +17,7 @@ let jobs = [
   {
     id: "_srt9zo8iz",
     companyId: "_xp6euaxae",
-    title: "Full Stack Software Engineer",
+    title: "Job 2 - Full Stack Software Engineer",
     city: "Da Nang",
     postedDate: "2021-07-05T12:45:30.572Z",
     salaryLow: 400000,
@@ -32,7 +32,7 @@ let jobs = [
   {
     id: "_hicjm0zgs",
     companyId: "_xp6euaxae",
-    title: "Full-Stack Engineer - Open to U.S. Remote",
+    title: "Job 3 - Full-Stack Engineer - Open to U.S. Remote",
     city: "New York",
     postedDate: "2021-07-08T12:45:30.568Z",
     salaryLow: 400000,
@@ -47,7 +47,7 @@ let jobs = [
   {
     id: "_3ptahsno6",
     companyId: "_6s4fcvwqg",
-    title: "Full Stack Software Engineer",
+    title: "Job 4 - Full Stack Software Engineer",
     city: "Kuala Lumpur",
     postedDate: "2021-06-25T12:45:30.534Z",
     salaryLow: 540000,
@@ -62,7 +62,7 @@ let jobs = [
   {
     id: "_o6m4p5c39",
     companyId: "_7xo50sanl",
-    title: "React Native Dev (JavaScript, ReactJS)",
+    title: "Job 5 - React Native Dev (JavaScript, ReactJS)",
     city: "San Francisco",
     postedDate: "2021-07-03T12:45:30.552Z",
     salaryLow: 380000,
@@ -77,7 +77,7 @@ let jobs = [
   {
     id: "_60sl6v1fo",
     companyId: "_lerjrekhx",
-    title: "Tech Lead - Mobile Engineer",
+    title: "Job 6 - Tech Lead - Mobile Engineer",
     city: "Singapore",
     postedDate: "2021-07-09T12:45:30.597Z",
     salaryLow: 340000,
@@ -99,7 +99,7 @@ let jobs = [
   {
     id: "_59ky1v0i4",
     companyId: "_v86b2k3pv",
-    title: "Software Engineer",
+    title: "Job 7 - Software Engineer",
     city: "Orlando",
     postedDate: "2021-06-28T12:45:30.555Z",
     salaryLow: 300000,
@@ -114,7 +114,7 @@ let jobs = [
   {
     id: "_9i69890qk",
     companyId: "_n85y8956i",
-    title: "Software Engineer",
+    title: "Job 8 - Software Engineer",
     city: "Singapore",
     postedDate: "2021-06-11T12:45:30.577Z",
     salaryLow: 540000,
@@ -129,7 +129,7 @@ let jobs = [
   {
     id: "_7xywros7m",
     companyId: "_au9gk9akr",
-    title: "Full Stack Developer (NodeJS, ReactJS)",
+    title: "Job 9 - Full Stack Developer (NodeJS, ReactJS)",
     city: "Orlando",
     postedDate: "2021-06-30T12:45:30.533Z",
     salaryLow: 450000,
@@ -144,7 +144,7 @@ let jobs = [
   {
     id: "_d08d5p0ub",
     companyId: "_6s4fcvwqg",
-    title: "Full Stack Software Engineer",
+    title: "Job 10 - Full Stack Software Engineer",
     city: "Tokyo",
     postedDate: "2021-06-18T12:45:30.536Z",
     salaryLow: 550000,
@@ -159,7 +159,7 @@ let jobs = [
   {
     id: "_53os00p0n",
     companyId: "_v86b2k3pv",
-    title: "Full-stack Engineer (ReactJS, NodeJS)",
+    title: "Job 11 - Full-stack Engineer (ReactJS, NodeJS)",
     city: "New York",
     postedDate: "2021-06-29T12:45:30.559Z",
     salaryLow: 240000,
@@ -174,7 +174,7 @@ let jobs = [
   {
     id: "_5j4gwq5xc",
     companyId: "_1js1rb41w",
-    title: "Full Stack Software Engineer",
+    title: "Job 12 - Full Stack Software Engineer",
     city: "Hong Kong",
     postedDate: "2021-06-13T12:45:30.590Z",
     salaryLow: 360000,
@@ -189,7 +189,7 @@ let jobs = [
   {
     id: "_a5xilmap8",
     companyId: "_v86b2k3pv",
-    title: "Frontend Engineer",
+    title: "Job 13 - Frontend Engineer",
     city: "Paris",
     postedDate: "2021-06-15T12:45:30.555Z",
     salaryLow: 530000,
@@ -204,7 +204,7 @@ let jobs = [
   {
     id: "_7ktixmpfu",
     companyId: "_2x5u1ahbm",
-    title: "Full-stack Engineer (ReactJS, NodeJS)",
+    title: "Job 14 - Full-stack Engineer (ReactJS, NodeJS)",
     city: "Hong Kong",
     postedDate: "2021-06-13T12:45:30.544Z",
     salaryLow: 380000,
