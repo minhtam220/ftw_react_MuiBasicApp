@@ -1,9 +1,11 @@
-import { Box } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { Box, Modal, Typography } from "@mui/material";
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar.js";
 import { getJob } from "../data.js";
+import { useContext, useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
 const style = {
   position: "absolute",
@@ -21,23 +23,43 @@ export default function JobModal() {
   let params = useParams();
   let job = getJob(params.jobId);
 
+  const [modalOpen, setModalopen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (job) {
+      setModalopen(true);
+    } else {
+      setModalopen(false);
+    }
+  }, [location.pathname]);
+
   return (
-    <div>
-      <NavigationBar></NavigationBar>
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          {job.title}
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          {job.description}
-          <br />
-          Location: {job.city}
-          <br />
-          Experience: {job.yrsXPExpected}
-          <br />
-          Salary: {job.salaryLow} - {job.salaryHigh}
-        </Typography>
-      </Box>
-    </div>
+    <>
+      <Modal
+        open={modalOpen}
+        onClose={() => {
+          navigate(-1);
+        }}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Job Modal: {job.title}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {job.description}
+            <br />
+            Location: {job.city}
+            <br />
+            Experience: {job.yrsXPExpected}
+            <br />
+            Salary: {job.salaryLow} - {job.salaryHigh}
+          </Typography>
+        </Box>
+      </Modal>
+    </>
   );
 }
