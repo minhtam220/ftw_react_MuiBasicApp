@@ -29,6 +29,7 @@ export default function LoginModal() {
     navigate(-1);
   };
 
+  // eslint-disable-next-line
   useEffect(() => {
     if (location.pathname === "/login") {
       setModalopen(true);

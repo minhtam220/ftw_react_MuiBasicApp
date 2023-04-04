@@ -21,17 +21,21 @@ export default function JobModal() {
   let params = useParams();
   let job = getJob(params.jobId);
 
-  const [modalOpen, setModalopen] = useState(false);
+  const [modalOpen, setModalopen] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
+  // eslint-disable-next-line
+  /*
   useEffect(() => {
-    if (job) {
+    if ([location.pathname]) {
+      job = getJob(params.jobId);
       setModalopen(true);
     } else {
       setModalopen(false);
     }
   }, [location.pathname]);
+  */
 
   return (
     <>

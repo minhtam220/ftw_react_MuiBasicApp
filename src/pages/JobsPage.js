@@ -37,11 +37,6 @@ export default function JobsPage() {
             let title = job.title.toLowerCase();
             return title.startsWith(filter.toLowerCase());
           })
-
-          //.slice(0, 5)
-
-          //.slice(5, 10)
-
           .slice((currentPage - 1) * 5, currentPage * 5)
           .map((job) => (
             <Grid item xs={12} md={4} lg={4}>
