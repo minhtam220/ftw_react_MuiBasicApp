@@ -45,7 +45,7 @@ export default function JobModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Job Modal: {job.title}
+            {job.title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {job.description}
